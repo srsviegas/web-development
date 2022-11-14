@@ -1,0 +1,153 @@
+:root {
+    --blue: hsl(240deg 100% 20%);
+    --red: hsl(337deg 100% 50%);
+    --yellow: hsl(55deg 100% 50%);
+    --black: rgb(20, 20, 20);
+}
+
+body {
+    background-color: black;
+    font-family: "Calibri";
+}
+
+.background {
+    position: fixed;
+    right: -5%;
+    top: -5%;
+    width: 110%;
+    height: 110%;
+    background: url(img/background.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(2px);
+}
+
+.calculator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f4f4f4;
+    width: 50%;
+    padding: 1%;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .5);
+    letter-spacing: 10px;
+    font-size: 20px;
+}
+
+.title {
+    margin-top: 40px;
+    margin-bottom: 0%;
+}
+
+#input-box,
+.buttons {
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 20;
+    background: linear-gradient(
+        40deg,
+        #18161e 0% 20%,
+        var(--blue) 44%,
+        var(--red) 66%,
+        var(--yellow) 100%
+    );
+    background-size: 300% 500%;
+    background-position: 0% 100%;
+    transition: 0.5s;
+}
+
+#input-box:hover,
+.buttons:hover {
+    background-position: 70% 0%;
+    background-size: 300% 300%;
+}
+
+#input-box {
+    font-size: 20px;
+    width: 99%;
+    border-radius: 5px;
+    height: 50px;
+    text-align: center;
+}
+
+#input-box.invalid-input {
+    animation-name: bounce;
+    animation-duration: 0.35s;
+    animation-delay: 0.15s;
+}
+
+@keyframes bounce {
+    00% { transform: translateX(0px);  }
+    10% { transform: translateX(-5px); }
+    25% { transform: translateX(5px);  }
+    50% { transform: translateX(-5px); }
+    60% { transform: translateX(4px);  }
+    70% { transform: translateX(-4px); }
+    80% { transform: translateX(4px);  }
+    85% { transform: translateX(2px);  }
+    90% { transform: translateX(-2px); }
+    99% { transform: translateX(0px);  }
+}
+
+.buttons {
+    border-radius: 10px;
+    font-size: 20px;
+    width: 100px;
+    height: 60px;
+}
+
+.buttons:hover {
+    transform: scale(105%);
+}
+
+.buttons.pressed {
+    transition: transform 0.1s cubic-bezier(0, 1, .45, 1);
+    transform: scale(90%) !important;
+}
+
+.swapped {
+    animation-name: swapping;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(.23,.72,.62,.97);
+}
+
+@keyframes swapping {
+    00% { transform: scaleX(100%) }
+    45% { transform: scaleX(10%); color: transparent}
+    35% { transform: scaleX(10%); color: transparent}
+}
+
+#equal {
+    background: #f0f0f0;
+    color: var(--black);
+}
+
+#equal:hover {
+    background: var(--red);
+    color: rgba(20, 20, 20, 0.625);
+}
+
+#clear {
+    z-index: 1;
+    position: relative;
+    left: 206px;
+    top: 50px;
+    width: 87px;
+    height: 44px;
+    background: transparent;
+}
+
+#clear:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.signature {
+    display: block;
+    font-weight: 100;
+    letter-spacing: 2px;
+    color:rgb(20, 20, 20);
+    text-decoration: none;
+}

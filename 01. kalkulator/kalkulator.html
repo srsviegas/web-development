@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+  <script src="script.js" async></script>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="calculator" align=center>
+      <h1 class="title">KALKULATOR</h1>
+      <table>
+        <tr>
+          <td colspan=5>
+            <input type=text id="input-box" autofocus>
+          </td>
+          <button id="clear" class="buttons" onclick="reset()">C</button>
+        </tr>
+        <tr>
+          <td><button class="buttons" onclick="swapTrig()">trig</button></td>
+          <td><button class="buttons" onclick="put('\x28')">(</button></td>
+          <td><button class="buttons" onclick="put('\x29')">)</button></td>
+          <td><button class="buttons" onclick="put('%')">mod</button></td>
+          <td><button class="buttons" onclick="backspace()">&#9003;</button></td>
+        </tr>
+        <tr>
+          <td><button id="swap1" class="buttons" onclick="put('²')">x²</button></td>
+          <td><button class="buttons" onclick="put('&#960')">&pi;</button></td>
+          <td><button class="buttons" onclick="put('e')">e</button></td>
+          <td><button class="buttons" onclick="put('!')">n!</button></td>
+          <td><button class="buttons" onclick="put('/')">/</button></td>
+        </tr>
+        <tr>
+          <td><button id="swap2" class="buttons" onclick="put('\u221a()')">&radic;</button></td>
+          <td><button class="buttons" onclick="put('7')">7</button></td>
+          <td><button class="buttons" onclick="put('8')">8</button></td>
+          <td><button class="buttons" onclick="put('9')">9</button></td>
+          <td><button class="buttons" onclick="put('\u00d7')">&#215;</button></td>
+        </tr>
+        <tr>
+          <td><button id="swap3" class="buttons" onclick="put('^')">x<sup>y</sup></button></button></td>
+          <td><button class="buttons" onclick="put('4')">4</button></td>
+          <td><button class="buttons" onclick="put('5')">5</button></td>
+          <td><button class="buttons" onclick="put('6')">6</button></td>
+          <td><button class="buttons" onclick="put('-')">-</button></td>
+        </tr>
+        <tr>
+          <td><button class="buttons" onclick="put('log()')">log<sub>10</sub></button></td>
+          <td><button class="buttons" onclick="put('1')">1</button></td>
+          <td><button class="buttons" onclick="put('2')">2</button></td>
+          <td><button class="buttons" onclick="put('3')">3</button></td>
+          <td><button class="buttons" onclick="put('+')">+</button></td>
+        </tr>
+        <tr>
+          <td><button class="buttons" onclick="put('ln()')">ln</button></td>
+          <td><button class="buttons" onclick="put('||')">|x|</button></td>
+          <td><button class="buttons" onclick="put('0')">0</button></td>
+          <td><button class="buttons" onclick="put('.')">.</button></td>
+          <td><button class="buttons" id="equal" onclick="eval_result()">=</button></td>
+        </tr>
+      </table>
+      <h3><a class="signature" href="https://github.com/srsviegas" target="_blank">@srsviegas</a></h3>
+  </div>
+</body>
+</html>
