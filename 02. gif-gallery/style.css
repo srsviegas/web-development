@@ -1,0 +1,61 @@
+:root {
+    --black: rgb(20, 20, 20);
+    --gray: rgba(60, 60, 60);
+    --white: rgb(230, 230, 230);
+}
+
+body {
+    background: linear-gradient(
+        180deg,
+        var(--black) 60%,
+        rgb(34, 16, 36) 100%
+    ) fixed;
+    color: var(--white);
+}
+
+/* Header */
+#header {
+    font-family: "system-ui";
+    text-align: center;
+    margin: 15% auto;
+}
+    #header h1 {
+        font-size: 50px;
+        margin: 20px;  
+    }
+    #header input {
+        background: var(--gray);
+        border: none;
+        box-sizing: border-box;
+        color: var(--white);
+        font-size: 20px;
+        height: 50px;
+        outline: none;
+    }
+        #header input[type=text] {
+            padding-left: 30px;
+            border-radius: 10px 0 0 10px;
+            width: 600px;
+        }
+        #header input[type=submit] {
+            background: url("img/search-icon.png") var(--gray) no-repeat center;
+            background-size: 30px;
+            border-radius: 0 10px 10px 0;
+            width: 70px;
+        }
+    #giphy-logo {
+        height: 35px;
+        margin: 20px;
+    }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    background: var(--black);
+}
+    ::-webkit-scrollbar-thumb {
+        background: rgba(230, 230, 230, 0.05);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: rgba(230, 230, 230, 0.025);
+    }
