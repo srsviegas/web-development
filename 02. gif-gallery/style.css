@@ -44,9 +44,6 @@ body {
             max-width: 600px;
             width: 90%;
         }
-        .search-box:focus {
-            background-color: rgb(70, 70, 70);
-        }
         .search-btn {
             background: url("img/search-icon.png") var(--gray) no-repeat center;
             background-size: 30px;
@@ -57,6 +54,9 @@ body {
         .pressed {
             background-size: 25px;
             transform: scale(80%);
+        }
+        .focused {
+            background-color: rgb(70, 70, 70);
         }
     #giphy-logo {
         margin: 20px;
