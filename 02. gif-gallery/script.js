@@ -48,13 +48,19 @@ function placeGifs(gifs) {
     gifs.forEach(gif => {
         $("#gifs").append(createGifElement(gif));
     });
+    $("#gifs")[0].scrollIntoView({behavior: 'smooth'});
 }
 
 function createGifElement(gifData) {
-    let webp = gifData.images.preview_webp;
-    return $("<img>", {
-        src: webp.url,
-        height: webp.height,
-        width: webp.width
+    var pics = $("<picture>", { 
+        id: gifData.id,
+        class: "gif-container"
     });
+    pics.append($("<source>", { 
+        srcset: gifData.images.preview_webp.url,
+    }));
+    pics.append($("<img>", {
+        src: gifData.images.preview_gif.url
+    }))
+    return pics;
 }
