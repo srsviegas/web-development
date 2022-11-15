@@ -1,7 +1,7 @@
 :root {
     --black: rgb(20, 20, 20);
-    --gray: rgba(60, 60, 60);
-    --white: rgb(230, 230, 230);
+    --gray: rgb(60, 60, 60);
+    --white: rgb(248, 248, 248);
 }
 
 body {
@@ -15,16 +15,20 @@ body {
 
 /* Header */
 #header {
-    font-family: "system-ui";
+    font-family: sans-serif;
     text-align: center;
     margin: 15% auto;
 }
     #header h1 {
         font-size: 50px;
-        margin: 20px;  
+        letter-spacing: -1px;
+        line-height: 1;
+        font-weight: 600;
+        user-select: none;
+        margin: 20px;
+        text-shadow: 0 2px 3px #b393d3, 0 5px 6px #b393d3, 0 -2px 5px black;
     }
     #header input {
-        background: var(--gray);
         border: none;
         box-sizing: border-box;
         color: var(--white);
@@ -32,20 +36,36 @@ body {
         height: 50px;
         outline: none;
     }
-        #header input[type=text] {
-            padding-left: 30px;
+        .search-box {
+            background: var(--gray);
             border-radius: 10px 0 0 10px;
-            width: 600px;
+            padding-left: 30px;
+            margin-right: 5px;
+            max-width: 600px;
+            width: 90%;
         }
-        #header input[type=submit] {
+        .search-box:focus {
+            background-color: rgb(70, 70, 70);
+        }
+        .search-btn {
             background: url("img/search-icon.png") var(--gray) no-repeat center;
             background-size: 30px;
             border-radius: 0 10px 10px 0;
             width: 70px;
+            transition: all 0.1s cubic-bezier(0,1.22,.99,.97);
+        }
+        .pressed {
+            background-size: 25px;
+            transform: scale(80%);
         }
     #giphy-logo {
-        height: 35px;
         margin: 20px;
+        max-width: 250px;
+        width: 70%;
+        animation: appear 1s;
+    }
+    @keyframes appear {
+        0% { opacity: 0%; transform: translateY(20px); }
     }
 
 /* Scrollbar */
@@ -59,3 +79,9 @@ body {
     ::-webkit-scrollbar-track {
         background: rgba(230, 230, 230, 0.025);
     }
+
+.row-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+}

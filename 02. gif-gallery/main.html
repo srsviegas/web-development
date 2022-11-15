@@ -4,13 +4,20 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js" async></script>
+        <title>GIFGallery</title>
+        <link rel="icon" href="img/icon.png">
     </head>
     <body>
         <div id="header">
             <h1>GIF GALLERY</h1>
-            <input type="text" placeholder="Search GIFs">
-            <input type="submit" value=" "></br>
-            <img id="giphy-logo" src="img/giphy-logo.gif">
+            <div class="row-container">
+                <input id="search-txt" class="search-box" type="text" placeholder="Search GIFs">
+                <input class="search-btn" type="submit" value=" "></br>
+            </div>
+            <a href="https://giphy.com/" target="_blank">
+                <img id="giphy-logo" src="img/giphy-logo.gif">
+            </a>
         </div>
     </body>
 </html>
