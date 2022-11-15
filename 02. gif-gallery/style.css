@@ -6,12 +6,20 @@
 
 body {
     font-family: sans-serif;
+    background: url("img/background-pattern.png");
+    color: var(--white);
+}
+
+#background {
+    position: fixed;
     background: linear-gradient(
         180deg,
-        var(--black) 60%,
-        rgb(34, 16, 36) 100%
-    ) fixed;
-    color: var(--white);
+        rgba(20, 20, 20, 0.75) 60%,
+        rgba(37, 12, 39, 0.75) 100%
+    ) no-repeat fixed;
+    width: 100%; height: 100%;
+    top: 0%; left: 0%;
+    z-index: -1;
 }
 
 /* Header */
@@ -131,6 +139,32 @@ body {
         }
     }
 
+/* Image display */
+.img-display {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(12, 11, 12, 0.9);
+    height: 80%; width: 80%;
+}
+    .img-display img {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+    }
+    #img-display-shadow {
+        position: relative;
+        z-index: 1;
+        opacity: 100%;
+        height: 100%; width: 100%;
+        background: linear-gradient(
+            180deg,
+            transparent 20%,
+            var(--black) 100%
+        );
+    }
+
 /* Scroll Back To Top Button */
 .scroll-top {
     background: url("img/to-top.png") rgba(46, 30, 48, 0.75) no-repeat;
@@ -142,6 +176,7 @@ body {
     height: 60px;
     width: 60px;
     border-radius: 50%;
+    box-shadow: 0 2px 0px white, 0 6px 4px rgb(157, 0, 255);
 }
     @media (max-aspect-ratio: 1/1) {
         .scroll-top {

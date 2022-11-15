@@ -9,8 +9,10 @@ $(document).ready(function() {
         $(this).removeClass('focused');
         $('.search-btn').removeClass('focused');
     });
+
     // Autofocus on search box after effect loads
     $('.search-box').focus();
+
     // Search button click
     $('.search-btn').click(function() {
         $(this).addClass('pressed');
@@ -19,11 +21,13 @@ $(document).ready(function() {
         }, 110);
         searchStart();
     });
+
     // Start search request with enter press
     $('.search-box').keypress(event => {
         if (event.key === "Enter")
             searchStart();
     })
+
     // To the top button
     $('.scroll-top').click(function() {
         $(this).addClass('pressed');
@@ -34,6 +38,21 @@ $(document).ready(function() {
             top: 0,
             behavior: 'smooth'
         })
+    })
+
+    // Display clicked image
+        /* Does not work yet because of picture container having
+        no height and width */
+    $('.gif-container').click(function() {
+        console.log('ok');
+        $("#img-display").show();
+    })
+
+    // Image display hover
+    $('.img-display').hover(() => {
+        $("#img-display-shadow").css('opacity', '100%');
+    }, () => {
+        $("#img-display-shadow").css('opacity', '0%');
     })
 
     function searchStart() {
@@ -80,7 +99,7 @@ function placeGifs(gifs) {
 }
 
 function createGifElement(gifData) {
-    var pics = $('<picture>', { 
+    var pics = $('<picture>', {
         id: gifData.id,
         class: 'gif-container'
     });
