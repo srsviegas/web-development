@@ -1,4 +1,4 @@
-const API_KEY = "Mj5AHrhbz1qo4rj4Ks4wSCdX94pP8yoB";
+const API_KEY = 'Mj5AHrhbz1qo4rj4Ks4wSCdX94pP8yoB';
 
 $(document).ready(function() {
     // Focus effect on search box / button
@@ -11,19 +11,42 @@ $(document).ready(function() {
     });
     // Autofocus on search box after effect loads
     $('.search-box').focus();
-    // Search button click effect
+    // Search button click
     $('.search-btn').click(function() {
         $(this).addClass('pressed');
         setTimeout(() => {
             $(this).removeClass('pressed');
         }, 110);
-        $("#gifs").empty();
-        if ($("#search-txt").val() != "") {
-            sendSearchRequest($("#search-txt").val());
+        searchStart();
+    });
+    // Start search request with enter press
+    $('.search-box').keypress(event => {
+        if (event.key === "Enter")
+            searchStart();
+    })
+    // To the top button
+    $('.scroll-top').click(function() {
+        $(this).addClass('pressed');
+        setTimeout(() => {
+            $(this).removeClass('pressed');
+        }, 110);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    })
+
+    function searchStart() {
+        $('.search-box').blur();
+        $('#gifs').empty();
+        if ($('#search-txt').val() !== '') {
+            $("#gifs-title").html(`GIFs about \"${$('#search-txt').val()}\"`);
+            sendSearchRequest($('#search-txt').val());
         } else {
+            $("#gifs-title").html("Trending GIFs");
             sendTrendingRequest();
         }
-    });
+    }
 });
 
 function sendSearchRequest(query) {
@@ -46,20 +69,25 @@ function sendTrendingRequest() {
 
 function placeGifs(gifs) {
     gifs.forEach(gif => {
-        $("#gifs").append(createGifElement(gif));
+        $('#gifs').append(createGifElement(gif));
     });
-    $("#gifs")[0].scrollIntoView({behavior: 'smooth'});
+    let y = $('#gifs-title').offset().top;
+    $('#gifs-block').css('height', y+200);
+    window.scrollTo({
+        top: y - 50,
+        behavior: 'smooth'
+    });
 }
 
 function createGifElement(gifData) {
-    var pics = $("<picture>", { 
+    var pics = $('<picture>', { 
         id: gifData.id,
-        class: "gif-container"
+        class: 'gif-container'
     });
-    pics.append($("<source>", { 
+    pics.append($('<source>', { 
         srcset: gifData.images.preview_webp.url,
     }));
-    pics.append($("<img>", {
+    pics.append($('<img>', {
         src: gifData.images.preview_gif.url
     }))
     return pics;
