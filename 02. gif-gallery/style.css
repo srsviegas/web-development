@@ -17,10 +17,10 @@ body {
 #header {
     font-family: sans-serif;
     text-align: center;
-    margin: 15% auto;
+    margin: 15% 10px;
 }
     #header h1 {
-        font-size: 50px;
+        font-size: 60px;
         letter-spacing: -1px;
         line-height: 1;
         font-weight: 600;
@@ -42,7 +42,7 @@ body {
             padding-left: 30px;
             margin-right: 5px;
             max-width: 600px;
-            width: 90%;
+            width: 100%;
         }
         .search-btn {
             background: url("img/search-icon.png") var(--gray) no-repeat center;
