@@ -24,9 +24,9 @@ $(document).ready(function() {
 
     // Start search request with enter press
     $('.search-box').keypress(event => {
-        if (event.key === "Enter")
+        if (event.key === 'Enter')
             searchStart();
-    })
+    });
 
     // To the top button
     $('.scroll-top').click(function() {
@@ -38,33 +38,50 @@ $(document).ready(function() {
             top: 0,
             behavior: 'smooth'
         })
-    })
+    });
+
+    // Image preview hover
+    $(document).on('mouseenter', '.gif-preview', function() {
+        $(this).addClass('preview-overlay');
+    });
+    $(document).on('mouseleave', '.gif-preview', function() {
+        $(this).removeClass('preview-overlay');
+    });
 
     // Display clicked image
-        /* Does not work yet because of picture container having
-        no height and width */
-    $('.gif-container').click(function() {
-        console.log('ok');
-        $("#img-display").show();
-    })
+    $(document).on('click', '.gif-preview', function() {
+        $('.img-display').show();
+    });
+
+    // Block scroll if image showcase is visible
+    $('.img-display').on('mousewheel touchmove', (event) => {
+        event.preventDefault();
+    });
 
     // Image display hover
     $('.img-display').hover(() => {
-        $("#img-display-shadow").css('opacity', '100%');
+        $('#img-display-shadow').css('opacity', '100%');
     }, () => {
-        $("#img-display-shadow").css('opacity', '0%');
-    })
+        $('#img-display-shadow').css('opacity', '0%');
+    });
+
+    // Image display close button
+    $('#img-display-close').click(() => $('.img-display').hide());
 
     function searchStart() {
         $('.search-box').blur();
         $('#gifs').empty();
-        if ($('#search-txt').val() !== '') {
-            $("#gifs-title").html(`GIFs about \"${$('#search-txt').val()}\"`);
-            sendSearchRequest($('#search-txt').val());
+        let q = $('#search-txt').val();
+        if (q !== '') {
+            document.title = (q + ' - GIFGallery');
+            $('#gifs-title').html(`GIFs about \'${q}\'`);
+            sendSearchRequest(q);
         } else {
-            $("#gifs-title").html("Trending GIFs");
+            document.title = 'GIFGallery';
+            $('#gifs-title').html('Trending GIFs');
             sendTrendingRequest();
         }
+        $('.search-box').val(null);
     }
 });
 
@@ -99,15 +116,15 @@ function placeGifs(gifs) {
 }
 
 function createGifElement(gifData) {
-    var pics = $('<picture>', {
+    let container = $('<div>', {
         id: gifData.id,
-        class: 'gif-container'
+        class: 'gif-preview'
     });
-    pics.append($('<source>', { 
-        srcset: gifData.images.preview_webp.url,
+    container.append($('<video>', {
+        src: gifData.images.downsized_small.mp4,
+        autoplay: true,
+        loop: true,
+        muted: true
     }));
-    pics.append($('<img>', {
-        src: gifData.images.preview_gif.url
-    }))
-    return pics;
+    return container;
 }
